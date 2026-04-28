@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscripción - Escape Room: El Caso Carla</title>
+    <meta name="description" content="Formulario de reserva oficial para el Escape Room El Caso Carla. Reserva tu horario de participación.">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">ESCAPE ROOM</h1>
+            <h2 class="subtitle">Inscripción Oficial</h2>
+            
+            <div class="info-card">
+                <div class="info-item">
+                    <span class="icon">📅</span>
+                    <p><strong>Fecha:</strong> 30 de abril</p>
+                </div>
+                <div class="info-item">
+                    <span class="icon">🕛</span>
+                    <p><strong>Horario:</strong> 11:00 a.m. a 2:00 p.m.</p>
+                </div>
+                <div class="info-item">
+                    <span class="icon">📍</span>
+                    <p><strong>Lugar:</strong> Coworking Talento y Cultura</p>
+                </div>
+                <div class="info-item">
+                    <span class="icon">📌</span>
+                    <p><strong>Referencia:</strong> Frente a caja de Campus 2, a espaldas de la cafetería</p>
+                </div>
+            </div>
+
+            <div class="alert-box">
+                <span class="icon">⚠️</span>
+                <div>
+                    <p><strong>Importante:</strong> Cada equipo contará con 10 minutos para completar el reto.</p>
+                    <p>Los cupos por horario son limitados. <strong style="color: #fff;">Un horario reservado se bloquea automáticamente para los demás.</strong></p>
+                </div>
+            </div>
+        </header>
+
+        <form id="reservationForm" class="form-section">
+            <div class="form-group">
+                <label for="teamName">Nombre del equipo <span class="required">*</span></label>
+                <input type="text" id="teamName" name="teamName" placeholder="Ej. Los Investigadores" required autocomplete="off">
+            </div>
+
+            <div class="form-group">
+                <label>Cantidad de participantes <span class="required">*</span></label>
+                <div class="radio-group" id="participantsGroup">
+                    <label class="radio-option"><input type="radio" name="participants" value="1" required> <span>1</span></label>
+                    <label class="radio-option"><input type="radio" name="participants" value="2"> <span>2</span></label>
+                    <label class="radio-option"><input type="radio" name="participants" value="3"> <span>3</span></label>
+                    <label class="radio-option"><input type="radio" name="participants" value="4"> <span>4</span></label>
+                    <label class="radio-option"><input type="radio" name="participants" value="5"> <span>5</span></label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="members">Integrantes (Nombres completos) <span class="required">*</span></label>
+                <textarea id="members" name="members" rows="3" placeholder="Lista a todos los integrantes (ej. Juan Perez, Maria Gomez)..." required></textarea>
+            </div>
+
+            <div class="form-group time-slot-group">
+                <label>Selección de Horario <span class="required">*</span></label>
+                <p class="helper-text">Selecciona un bloque de 10 minutos. Los horarios opacados indican que otro equipo ya los reservó.</p>
+                
+                <div class="time-slots" id="timeSlotsContainer">
+                    <!-- Los slots de tiempo se generarán dinámicamente con JS -->
+                </div>
+                <input type="hidden" name="selectedTimeSlot" id="selectedTimeSlot" required>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">
+                <span>Confirmar Reserva</span>
+                <div class="spinner" id="submitSpinner"></div>
+            </button>
+        </form>
+
+        <div id="successMessage" class="success-message hidden">
+            <div class="success-icon">✓</div>
+            <h3>¡Reserva Confirmada!</h3>
+            <p>Tu equipo <strong id="successTeamName"></strong> ha reservado el horario de <strong id="successTime"></strong>.</p>
+            <p style="margin-top: 1rem; font-size: 0.95rem; color: #a0a5b1;">Ese horario ya no estará disponible para otros equipos.</p>
+            <button id="resetBtn" class="secondary-btn">Hacer otra reserva de prueba</button>
+        </div>
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
